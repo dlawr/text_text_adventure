@@ -1,0 +1,30 @@
+{
+  "name": "text_text_adventure",
+  "version": "1.0.0",
+  "description": "Text adventure through texts.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlawr/text_text_adventure.git"
+  },
+  "author": "Dan Lawrence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlawr/text_text_adventure/issues"
+  },
+  "homepage": "https://github.com/dlawr/text_text_adventure#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.7.0",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pg-promise": "^3.4.3"
+  }
+}
