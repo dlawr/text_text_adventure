@@ -37,6 +37,15 @@ this is important to know for formating purposes`
   res.send('hopefully sent')
 })
 
+app.get('/messages', (req, res) => {
+  client.messages.list({
+}, function(err, data) {
+  console.log(data.messages);
+	data.messages.forEach(function(message) {
+	 console.log(message.from);
+	});
+});
+})
 
 // app.use('/api/guests', guestRoutes)
 // app.use('/api/users',expressJWT({secret:secret}),userRoutes)
