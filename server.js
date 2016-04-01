@@ -6,6 +6,7 @@ const logger       = require('morgan');
 const path         = require('path');
 const bodyParser   = require('body-parser');
 const expressJWT   = require('express-jwt');
+const client       = require('twilio')(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 // const guestRoutes  = require( path.join(__dirname, '/routes/guests'));
 // const userRoutes   = require( path.join(__dirname, '/routes/users'));
 
@@ -21,9 +22,23 @@ app.use(logger('dev'));
 
 app.get('/', (req, res) => {res.send('it\'s alive')})
 
+app.get('/send/:number', (req, res) => {
+  client.messages.create({
+    to: `+${req.params.number}`,
+    from: `+${process.env.PHONE}`,
+    body: `do
+newline
+characters
+work?
+this is important to know for formating purposes`
+  }, function(err, message) {
+    console.log(message.sid);
+  });
+  res.send('hopefully sent')
+})
+
+
 // app.use('/api/guests', guestRoutes)
 // app.use('/api/users',expressJWT({secret:secret}),userRoutes)
 
-app.listen(_port , ()=>
-  console.log(`server here! listening on`, _port )
-);
+app.listen(_port , console.log(`server listening on ${_port}`));
