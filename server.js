@@ -46,6 +46,9 @@ app.get('/messages', (req, res) => {
 	});
 });
 })
+const db = require('./db/pgp/text.js')
+app.post('/text', db.newText, (req, res) => {res.json(res.text_id)})
+app.get('/text', db.allTexts, (req, res) => {res.json(res.texts)})
 
 // app.use('/api/guests', guestRoutes)
 // app.use('/api/users',expressJWT({secret:secret}),userRoutes)
