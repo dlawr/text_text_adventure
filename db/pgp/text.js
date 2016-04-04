@@ -1,12 +1,16 @@
 'use strict';
 const pgp = require('pg-promise')({});
 
-const cn = {
+if (process.env.ENVIRONMENT === 'dev') {
+  const cn = {
     host: process.env.HOST, // server name or IP address;
     port: 5432,
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASS
+  }
+} else if (process.env.ENVIRONMENT === 'production') {
+  const cn = process.env.DATABASE_URL;
 }
 
 const db = pgp(cn);
