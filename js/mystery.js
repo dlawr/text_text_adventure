@@ -44,7 +44,12 @@ function intro(req, res, next) {
       req.gameState.choices = ['yes', 'no'];
     }
   } else {
-    
+    req.gameState.location = 'house';
+    req.gameState.text = `You arrive at the crime scene by 10:00, which was frankly a miracle given the traffic.  The uniform on scene briefs you on your way in.  “The victim was found in the dining room.” he says. “He’s been ID’d as Daniel Jenkins, lives at 34th and Lex.  He was here for a dinner party.  There were 9 other guests.  The hosts, Bert and Victoria Eichmann, are in the kitchen.  There’s another couple, the Gerholds, in the living room with a Ms. Cremin.  Mr. Cremin is in the rec room with John Gardner and his wife,  Dr. Serenity Schaden.  The victim’s wife, Diana Jenkins, is in the office.
+
+    Where would you like to go first?”
+    office, rec room, kitchen, or living room`;
+    req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
   }
   next();
 }
