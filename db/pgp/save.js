@@ -12,3 +12,16 @@ if (process.env.ENVIRONMENT === 'production') {
     password: process.env.DB_PASS
   }
 }
+
+function getSaveData(req, res, next) {
+  db.one(`select * from states where phone like $/From/`,req.body)
+  .then(function(data) {
+    res.save = data;
+    next();
+  })
+  .catch(function(err) {
+    console.error('error with pgp/save getSaveData',err);
+  })
+}
+
+module.exports.getSaveData = getSaveData;
