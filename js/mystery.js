@@ -53,3 +53,5 @@ function intro(req, res, next) {
   }
   next();
 }
+
+module.exports = start;
