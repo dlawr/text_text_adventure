@@ -21,7 +21,7 @@ function newText(req, res, next) {
     (body)
   values
   ($/body/)
-  returning event_id`,req)
+  returning text_id`,req)
     .then(function(data) {
       res.text_id = data;
       next();
