@@ -1,7 +1,0 @@
-function setGameState() {
-
-}
-
-function checkInput() {
-
-}
