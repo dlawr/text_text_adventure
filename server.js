@@ -46,10 +46,11 @@ app.get('/messages', (req, res) => {
 const text = require('./db/pgp/text.js');
 const save = require('./db/pgp/save.js');
 const setup = require('./js/setup.js');
+const mystery = require('./jsmystery.js');
 app.post('/text', text.newText, (req, res) => {res.json(res.text_id)})
 app.get('/text', text.allTexts, (req, res) => {res.json(res.texts)})
 
-app.post('/game', save.getSaveData, setup.setGameState, (req, res) => {
+app.post('/game', save.getSaveData, setup.setGameState, mystery, (req, res) => {
   // client.messages.create({
   //   to: `+${req.params.number}`,
   //   from: `+${process.env.PHONE}`,
