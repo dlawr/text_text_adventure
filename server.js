@@ -36,16 +36,27 @@ app.get('/send/:number', (req, res) => {
 
 app.get('/messages', (req, res) => {
   client.messages.list({
-}, function(err, data) {
-  console.log(data.messages);
-	data.messages.forEach(function(message) {
-	 console.log(message.from);
-	});
-});
+  }, function(err, data) {
+    console.log(data.messages);
+	  data.messages.forEach(function(message) {
+	    console.log(message.from);
+	  });
+  });
 })
 const db = require('./db/pgp/text.js')
 app.post('/text', db.newText, (req, res) => {res.json(res.text_id)})
 app.get('/text', db.allTexts, (req, res) => {res.json(res.texts)})
+
+app.post('/game', (req, res) => {
+  // client.messages.create({
+  //   to: `+${req.params.number}`,
+  //   from: `+${process.env.PHONE}`,
+  //   body: `thing`
+  // }, function(err, message) {
+  //   console.log(message.sid);
+  // });
+  res.send(res.text)
+})
 
 // app.use('/api/guests', guestRoutes)
 // app.use('/api/users',expressJWT({secret:secret}),userRoutes)
