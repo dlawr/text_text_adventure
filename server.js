@@ -43,11 +43,12 @@ app.get('/messages', (req, res) => {
 	  });
   });
 })
-const db = require('./db/pgp/text.js')
-app.post('/text', db.newText, (req, res) => {res.json(res.text_id)})
-app.get('/text', db.allTexts, (req, res) => {res.json(res.texts)})
+const text = require('./db/pgp/text.js');
+const save = require('./db/pgp/save.js');
+app.post('/text', text.newText, (req, res) => {res.json(res.text_id)})
+app.get('/text', text.allTexts, (req, res) => {res.json(res.texts)})
 
-app.post('/game', (req, res) => {
+app.post('/game',  (req, res) => {
   // client.messages.create({
   //   to: `+${req.params.number}`,
   //   from: `+${process.env.PHONE}`,
