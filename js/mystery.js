@@ -4,8 +4,8 @@ var gameState = {
   phone: 0,
   location: '',
   text: '',
-  choices = [],
-  input: = ''
+  choices: [],
+  input: ''
 }
 
 function start(req, res, next) {
