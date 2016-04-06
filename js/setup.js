@@ -10,8 +10,12 @@ function setGameState(req, res, next) {
   next()
 }
 
-function checkNew() {
-  console.log('new user');
+function checkNew(req, res, next) {
+  if (res.newUser) {
+    console.log('new user');
+    save.insertNewUser(req, res, next)
+  }
+  next();
 }
 
 function checkInput() {

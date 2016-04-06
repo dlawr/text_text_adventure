@@ -23,9 +23,20 @@ function getSaveData(req, res, next) {
   })
   .catch(function(err) {
     console.error('error with pgp/save getSaveData',err);
-    res.save = 'new user';
+    res.newUser = true;
     next();
   })
 }
 
+function insertNewUser(req, res, next) {
+  db.none('insert into states (phone) values ($/From/)', req.body)
+  .then(function() {
+    next();
+  })
+  .catch(function(err) {
+    console.error('error with pgp/save insertNewUser', err)
+  })
+}
+
 module.exports.getSaveData = getSaveData;
+module.exports.insertNewUser = insertNewUser;
