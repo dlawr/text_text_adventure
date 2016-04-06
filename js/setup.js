@@ -4,8 +4,6 @@ function setGameState(req, res, next) {
   req.gameState = {};
   req.gameState.phone = req.body.From;
   req.gameState.location = res.save.location;
-  req.gameState.text = res.save.flavor_text;
-  req.gameState.choices = res.save.choices;
   req.gameState.input = req.body.Body;
   next()
 }
@@ -18,9 +16,20 @@ function saveNew(req, res, next) {
   next();
 }
 
+function setNew(req, res, next) {
+  if (res.newUser) {
+    res.save = {
+      phone: req.body.From,
+      location: 'intro'
+    }
+  }
+  next();
+}
+
 function checkInput() {
 
 }
 
 module.exports.setGameState = setGameState;
 module.exports.saveNew = saveNew;
+module.exports.setNew = setNew;

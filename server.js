@@ -50,7 +50,7 @@ const mystery = require('./js/mystery.js');
 app.post('/text', text.newText, (req, res) => {res.json(res.text_id)})
 app.get('/text', text.allTexts, (req, res) => {res.json(res.texts)})
 
-app.post('/game', save.getSaveData, setup.saveNew, setup.setGameState, mystery, (req, res) => {
+app.post('/game', save.getSaveData, setup.saveNew, setup.setNew, setup.setGameState, mystery, (req, res) => {
   // client.messages.create({
   //   to: `+${req.params.number}`,
   //   from: `+${process.env.PHONE}`,
@@ -58,7 +58,7 @@ app.post('/game', save.getSaveData, setup.saveNew, setup.setGameState, mystery, 
   // }, function(err, message) {
   //   console.log(message.sid);
   // });
-  res.send(res.text)
+  res.send(req.gameState.text);
 })
 
 // app.use('/api/guests', guestRoutes)
