@@ -23,6 +23,7 @@ function getSaveData(req, res, next) {
   })
   .catch(function(err) {
     console.error('error with pgp/save getSaveData',err);
+    res.save = 'new user';
     next();
   })
 }
