@@ -10,7 +10,7 @@ function setGameState(req, res, next) {
   next()
 }
 
-function checkNew(req, res, next) {
+function saveNew(req, res, next) {
   if (res.newUser) {
     console.log('new user');
     save.insertNewUser(req, res, next)
@@ -23,4 +23,4 @@ function checkInput() {
 }
 
 module.exports.setGameState = setGameState;
-module.exports.checkNew = checkNew;
+module.exports.saveNew = saveNew;
