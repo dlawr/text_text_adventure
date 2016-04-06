@@ -13,6 +13,8 @@ if (process.env.ENVIRONMENT === 'production') {
   }
 }
 
+const db = pgp(cn);
+
 function getSaveData(req, res, next) {
   db.one(`select * from states where phone like $/From/`,req.body)
   .then(function(data) {
