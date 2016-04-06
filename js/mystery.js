@@ -10,8 +10,8 @@ var gameState = {
 
 function start(req, res, next) {
   switch (req.gameState.location.split('-')[0]) {
-    case intro:
-      intro();
+    case 'intro':
+      intro(req, res, next);
       break;
     default:
 
