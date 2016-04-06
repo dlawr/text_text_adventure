@@ -10,8 +10,13 @@ function setGameState(req, res, next) {
   next()
 }
 
+function checkNew() {
+  console.log('new user');
+}
+
 function checkInput() {
 
 }
 
 module.exports.setGameState = setGameState;
+module.exports.checkNew = checkNew;
