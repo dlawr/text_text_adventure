@@ -10,5 +10,6 @@ create table states(
   phone text,
   location text,
   flavor_text text,
-  choices text[]
+  choices text[],
+  met text[]
 )
