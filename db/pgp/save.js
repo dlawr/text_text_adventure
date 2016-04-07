@@ -30,9 +30,7 @@ function getSaveData(req, res, next) {
 
 function insertNewUser(req, res, next) {
   db.none(`insert into states (phone, location) values ($/From/, 'intro')`, req.body)
-  .then(function() {
-    next();
-  })
+  .then(next())
   .catch(function(err) {
     console.error('error with pgp/save insertNewUser', err)
   })
@@ -44,9 +42,7 @@ function saveCurrentData(req, res, next) {
     ($/location/, $/text/, $/choices/, $/met/)
     where phone like $/phone/`,
   req.gameState)
-  .then(function() {
-    next();
-  })
+  .then(next())
   .catch(function(err) {
     console.error('error with pgp/save saveCurrentData', err);
   })
