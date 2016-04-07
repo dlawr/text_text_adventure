@@ -19,6 +19,18 @@ function badInput() {
   return bad;
 }
 
+function see(person) {
+  var seen = false;
+  req.gameState.met.forEach(function(el) {
+    if (el = person) {
+      seen = true
+    }
+  });
+  if (!seen) {
+    req.gameState.met.push(person);
+  }
+}
+
 function start(req, res, next) {
   if (badInput) {
     req.gameState.text = `What was that? your choices are:
@@ -43,7 +55,7 @@ function directory(req, res, next) {
     case 'rec room':
 
       break;
-    case 'kitchen'
+    case 'kitchen':
 
       break;
     case 'living room':
@@ -93,12 +105,12 @@ function intro(req, res, next) {
 function house(req, res, next) {
   switch (req.gameState.input) {
     case 'office':
-
+      office(req, res, next);
       break;
     case 'rec room':
 
       break;
-    case 'kitchen'
+    case 'kitchen':
 
       break;
     case 'living room':
@@ -109,8 +121,12 @@ function house(req, res, next) {
   }
 }
 
-function office() {
+function office(req, res, next) {
+  req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
+  req.gameState.text = `The office is fairly small, with a wooden desk and bookshelves, and a pair of leather armchairs on either side of a small table.  The table holds the end of a chess game.  There are few pieces left, and the white king is in checkmate near one corner of the board.  A tall blonde woman is pacing nervously.  You approach.  “Mrs. Jenkins, I’m so sorry for your loss.  Please, have a seat.  What can you tell me about what happened tonight?”  “After dinner, we all split up.  I came in here with Serenity for a game of chess.  We had a lot to catch up on, we were roommates in college, but she and her husband only just moved back into town.  Anyway, we finished our game around 9:00 and she left to find her husband.  That’s all I know.”
 
+  office, rec room, kitchen, or living room`
+  next();
 }
 
 module.exports = start;

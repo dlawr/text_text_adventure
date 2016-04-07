@@ -6,13 +6,13 @@ function setGameState(req, res, next) {
   req.gameState.location = res.save.location;
   req.gameState.input = req.body.Body.toLowerCase();
   req.gameState.met = res.save.met;
-  next()
+  next();
 }
 
 function saveNew(req, res, next) {
   if (res.newUser) {
-    console.log('new user');
-    save.insertNewUser(req, res, next)
+    req.body.Body = '';
+    save.insertNewUser(req, res, next);
   }
   next();
 }
