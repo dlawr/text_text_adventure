@@ -40,8 +40,8 @@ function insertNewUser(req, res, next) {
 
 function saveCurrentData(req, res, next) {
   db.none(`update states set
-    (location, flavor_text, choices) =
-    ($/location/, $/text/, $/choices/)
+    (location, flavor_text, choices, met) =
+    ($/location/, $/text/, $/choices/, $/met/)
     where phone like $/phone/`,
   req.gameState)
   .then(function() {

@@ -5,7 +5,8 @@ var gameState = {
   location: '',
   text: '',
   choices: [],
-  input: ''
+  input: '',
+  met: []
 }
 
 function badInput() {

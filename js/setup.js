@@ -5,6 +5,7 @@ function setGameState(req, res, next) {
   req.gameState.phone = req.body.From;
   req.gameState.location = res.save.location;
   req.gameState.input = req.body.Body.toLowerCase();
+  req.gameState.met = res.save.met;
   next()
 }
 
