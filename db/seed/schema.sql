@@ -13,4 +13,4 @@ create table states(
   flavor_text text,
   choices text[],
   met text[]
-)
+);
