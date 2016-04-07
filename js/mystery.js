@@ -36,6 +36,18 @@ function directory(req, res, next) {
     case 'house':
       house(req, res, next);
       break;
+    case 'office':
+
+      break;
+    case 'rec room':
+
+      break;
+    case 'kitchen'
+
+      break;
+    case 'living room':
+
+      break;
     default:
 
   }
@@ -94,6 +106,10 @@ function house(req, res, next) {
     default:
 
   }
+}
+
+function office() {
+
 }
 
 module.exports = start;
