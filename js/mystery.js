@@ -8,10 +8,33 @@ var gameState = {
   input: ''
 }
 
+function badInput() {
+  var bad = true;
+  req.gameState.choices.forEach(function(el) {
+    if (el === input) {
+      bad = false;
+    }
+  });
+  return bad;
+}
+
 function start(req, res, next) {
+  if (badInput) {
+    req.gameState.text = `What was that? your choices are:
+${req.gameState.choices.join(' | ')}`
+    next();
+  } else {
+    directory(req, res, next)
+  }
+}
+
+function directory(req, res, next) {
   switch (req.gameState.location.split('-')[0]) {
     case 'intro':
       intro(req, res, next);
+      break;
+    case 'house':
+      house(req, res, next);
       break;
     default:
 
@@ -52,6 +75,25 @@ function intro(req, res, next) {
     req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
   }
   next();
+}
+
+function house(req, res, next) {
+  switch (req.gameState.input) {
+    case 'office':
+
+      break;
+    case 'rec room':
+
+      break;
+    case 'kitchen'
+
+      break;
+    case 'living room':
+
+      break;
+    default:
+
+  }
 }
 
 module.exports = start;
