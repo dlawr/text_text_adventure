@@ -59,7 +59,7 @@ mystery,
 save.saveCurrentData,
 (req, res) => {
   client.messages.create({
-    to: `+${req.gameState.phone}`,
+    to: req.gameState.phone,
     from: `+${process.env.PHONE}`,
     body: req.gameState.text
   }, function(err, message) {
