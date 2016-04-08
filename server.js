@@ -64,7 +64,9 @@ save.saveCurrentData,
     from: `+${process.env.PHONE}`,
     body: req.gameState.text
   }, function(err, message) {
-    console.log(message.sid, req.gameState);
+    if (err) {
+      console.log(err, message);
+    }
   });
   res.send(req.gameState.text);
 })
