@@ -9,13 +9,17 @@ var gameState = {
   met: []
 }
 
-function badInput() {
+function badInput(req) {
   var bad = true;
   req.gameState.choices.forEach(function(el) {
-    if (el === input) {
+    if (el === req.gameState.input) {
       bad = false;
     }
   });
+  if (req.gameState.location === 'intro') {
+    bad = false;
+  }
+  console.log(bad);
   return bad;
 }
 
@@ -32,7 +36,8 @@ function see(person) {
 }
 
 function start(req, res, next) {
-  if (badInput) {
+  if (badInput(req)) {
+    console.log(req.gameState);
     req.gameState.text = `What was that? your choices are:
 ${req.gameState.choices.join(' | ')}`
     next();

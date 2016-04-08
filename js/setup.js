@@ -6,6 +6,8 @@ function setGameState(req, res, next) {
   req.gameState.location = res.save.location;
   req.gameState.input = req.body.Body.toLowerCase();
   req.gameState.met = res.save.met;
+  req.gameState.choices = res.save.choices;
+  console.log(req.gameState);
   next();
 }
 
@@ -19,9 +21,11 @@ function saveNew(req, res, next) {
 
 function setNew(req, res, next) {
   if (res.newUser) {
+    console.log('setNew');
     res.save = {
       phone: req.body.From,
-      location: 'intro'
+      location: 'intro',
+      choices: ['']
     }
   }
   next();
