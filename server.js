@@ -61,7 +61,7 @@ save.saveCurrentData,
   client.messages.create({
     to: `+${req.gameState.phone}`,
     from: `+${process.env.PHONE}`,
-    body: `thing`
+    body: req.gameState.text
   }, function(err, message) {
     // console.log(message.sid);
   });
