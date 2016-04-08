@@ -58,14 +58,14 @@ setup.setGameState,
 mystery,
 save.saveCurrentData,
 (req, res) => {
-  // client.messages.create({
-  //   to: `+${req.params.number}`,
-  //   from: `+${process.env.PHONE}`,
-  //   body: `thing`
-  // }, function(err, message) {
-  //   console.log(message.sid);
-  // });
-  res.send(req.gameState.text);
+  client.messages.create({
+    to: `+${req.gameState.phone}`,
+    from: `+${process.env.PHONE}`,
+    body: `thing`
+  }, function(err, message) {
+    console.log(message.sid);
+  });
+  // res.send(req.gameState.text);
 })
 
 // app.use('/api/guests', guestRoutes)
