@@ -63,9 +63,9 @@ save.saveCurrentData,
     from: `+${process.env.PHONE}`,
     body: `thing`
   }, function(err, message) {
-    console.log(message.sid);
+    // console.log(message.sid);
   });
-  // res.send(req.gameState.text);
+  res.send(req.gameState.text);
 })
 
 // app.use('/api/guests', guestRoutes)
