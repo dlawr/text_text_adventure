@@ -58,12 +58,13 @@ setup.setGameState,
 mystery,
 save.saveCurrentData,
 (req, res) => {
+  console.log('final callback',req.gameState);
   client.messages.create({
     to: req.gameState.phone,
     from: `+${process.env.PHONE}`,
     body: req.gameState.text
   }, function(err, message) {
-    // console.log(message.sid);
+    console.log(message.sid, req.gameState);
   });
   res.send(req.gameState.text);
 })
