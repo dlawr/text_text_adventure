@@ -59,6 +59,9 @@ mystery,
 setup.addChoices,
 save.saveCurrentData,
 (req, res) => {
+  if (req.gameState.location === 'complete') {
+    save.deleteState();
+  }
   console.log('final callback',req.gameState);
   client.messages.create({
     to: req.gameState.phone,
