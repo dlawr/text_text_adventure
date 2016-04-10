@@ -48,6 +48,15 @@ function saveCurrentData(req, res, next) {
   })
 }
 
+function deleteState(req, res, next) {
+  db.none(`delete from states where phone like $/phone/`, req.gameState)
+  .then(next)
+  .catch(function(err) {
+    console.error('error with pgp/save deleteState', err);
+  })
+}
+
 module.exports.getSaveData = getSaveData;
 module.exports.insertNewUser = insertNewUser;
 module.exports.saveCurrentData = saveCurrentData;
+module.exports.deleteState = deleteState;
