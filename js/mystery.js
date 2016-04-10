@@ -196,9 +196,14 @@ function kitchen(req, res, next) {
         req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
         break;
       case 'victoria eichmann':
-        req.gameState.choices = ['Victoria Eichmann', 'Bert Eichmann', 'exit'];
-        req.gameState.text = `“I was in kitchen with Bert Eichmann after dinner.  He’s the cook in this house, and I was helping him with cleanup.  He likes the company, and I am a bit of a cook myself, so I usually help him with the dishes.  When Victoria came in I decided to come find a game of pool.”`;
+        req.gameState.choices = ['Bert Eichmann', 'exit'];
+        req.gameState.text = `“I’ve been in the living room since dinner.  I was beating the pants off Jeanette in Scrabble.  I won with “excellent” with the x on the triple-letter.  Anyway, after I won I came in here to see how Bert was doing.  I always feel a bit guilty about leaving him to clean up while I’m having fun.  When I came in, Jacques was here helping, but I told him he could go find something more fun to do.”`;
         see(req, 'Victoria Eichmann');
+        break;
+      case 'bert eichmann':
+        req.gameState.choices = ['Victoria Eichmann', 'exit'];
+        req.gameState.text = `“I’ve been here since dinner, cleaning up and putting the finishing touches on dessert.  Jacques came in here with me to begin with, and he was a great help getting everything cleaned up.  We had a nice chat about the playoffs and the best methods of making flan.  He left when Victoria came in, I think he thought she wanted a moment alone with me.”`;
+        see(req, 'Bert Eichmann');
         break;
       default:
     }
