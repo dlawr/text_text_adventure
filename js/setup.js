@@ -32,6 +32,9 @@ function setNew(req, res, next) {
 }
 
 function addChoices(req, res, next) {
+  if (req.gameState.met) {
+    req.gameState.choices.push('accuse');
+  }
   req.gameState.text = `${req.gameState.text}
 
 ${req.gameState.choices.join(' | ')}`;

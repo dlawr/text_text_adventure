@@ -48,9 +48,8 @@ function saveCurrentData(req, res, next) {
   })
 }
 
-function deleteState(req, res, next) {
+function deleteState(req) {
   db.none(`delete from states where phone like $/phone/`, req.gameState)
-  .then(next)
   .catch(function(err) {
     console.error('error with pgp/save deleteState', err);
   })

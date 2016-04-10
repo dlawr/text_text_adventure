@@ -60,7 +60,7 @@ setup.addChoices,
 save.saveCurrentData,
 (req, res) => {
   if (req.gameState.location === 'complete') {
-    save.deleteState();
+    save.deleteState(req);
   }
   console.log('final callback',req.gameState);
   client.messages.create({
