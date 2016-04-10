@@ -31,6 +31,14 @@ function setNew(req, res, next) {
   next();
 }
 
+function addChoices(req, res, next) {
+  req.gameState.text = `${req.gameState.text}
+
+${req.gameState.choices.join(' | ')}`;
+  next();
+}
+
 module.exports.setGameState = setGameState;
 module.exports.saveNew = saveNew;
 module.exports.setNew = setNew;
+module.exports.addChoices = addChoices;

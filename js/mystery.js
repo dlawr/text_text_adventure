@@ -23,15 +23,20 @@ function badInput(req) {
   return bad;
 }
 
-function see(person) {
-  var seen = false;
-  req.gameState.met.forEach(function(el) {
-    if (el = person) {
-      seen = true
-    }
-  });
-  if (!seen) {
+function see(req, person) {
+  if (!req.gameState.met) {
+    req.gameState.met = [];
     req.gameState.met.push(person);
+  } else {
+    var seen = false;
+    req.gameState.met.forEach(function(el) {
+      if (el = person) {
+        seen = true
+      }
+    });
+    if (!seen) {
+      req.gameState.met.push(person);
+    }
   }
 }
 
@@ -137,13 +142,15 @@ function office(req, res, next) {
   req.gameState.text = `The office is fairly small, with a wooden desk and bookshelves, and a pair of leather armchairs on either side of a small table.  The table holds the end of a chess game.  There are few pieces left, and the white king is in checkmate near one corner of the board.  A tall blonde woman is pacing nervously.  You approach.  “Mrs. Jenkins, I’m so sorry for your loss.  Please, have a seat.  What can you tell me about what happened tonight?”  “After dinner, we all split up.  I came in here with Serenity for a game of chess.  We had a lot to catch up on, we were roommates in college, but she and her husband only just moved back into town.  Anyway, we finished our game around 9:00 and she left to find her husband.  That’s all I know.”
 
   office, rec room, kitchen, or living room`
+  see(req, 'Diana Jenkins');
   next();
 }
 
 function recRoom(req, res, next) {
   var location = req.gameState.location.split('-');
   if (location.length === 1) {
-
+    req.gameState.text = `As you enter the rec room, you see a pool table and a foosball table off to the right, with what appears to be a pool game abandoned mid-stream.  On the left, three people are sitting on an overstuffed couch, in front of a television screen.  The TV is currently off.  Two of the people, a petite brunette and a man of middling height, are sitting close together at one end of the couch, while a balding man sits a few feet away, facing them.  You say, “I’d like to speak to …`
+    req.gameState.choices = ['Dr. Serenity Schaden', 'John Gardner', 'Jacques Cremin']
   }
 }
 

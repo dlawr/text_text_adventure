@@ -56,6 +56,7 @@ setup.saveNew,
 setup.setNew,
 setup.setGameState,
 mystery,
+setup.addChoices,
 save.saveCurrentData,
 (req, res) => {
   console.log('final callback',req.gameState);
