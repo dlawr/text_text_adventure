@@ -33,6 +33,7 @@ function setNew(req, res, next) {
 }
 
 function addChoices(req, res, next) {
+  console.log('addChoices start', req.gameState);
   if (req.gameState.location != 'complete') {
     if (req.gameState.met && req.gameState.location.split('-')[0] != 'accuse') {
       req.gameState.choices.push('accuse');
