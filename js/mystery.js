@@ -186,8 +186,22 @@ function kitchen(req, res, next) {
   var location = req.gameState.location.split('-');
   if (location.length === 1) {
     req.gameState.location = `kitchen-c1`;
-    req.gameState.text = ``;
-    req.gameState.choices = [];
+    req.gameState.text = `The kitchen is fairly large, with maple cabinets and beige countertops.  There are two figures sitting on stools at the island in the middle of the kitchen.  The man is slumped over the counter, while the woman is sitting straighter, staring into the middle distance.  A few remnants of the dinner remain, but mostly the evidence of the party consists of a pile of dishes drying by the sink, and a tray of flan that has not yet been served.`;
+    req.gameState.choices = ['Victoria Eichmann', 'Bert Eichmann', 'exit'];
+  } else {
+    switch (req.gameState.input) {
+      case 'exit':
+        req.gameState.location = 'house';
+        req.gameState.text = `Where would you like to go?`;
+        req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
+        break;
+      case 'victoria eichmann':
+        req.gameState.choices = ['Victoria Eichmann', 'Bert Eichmann', 'exit'];
+        req.gameState.text = `“I was in kitchen with Bert Eichmann after dinner.  He’s the cook in this house, and I was helping him with cleanup.  He likes the company, and I am a bit of a cook myself, so I usually help him with the dishes.  When Victoria came in I decided to come find a game of pool.”`;
+        see(req, 'Victoria Eichmann');
+        break;
+      default:
+    }
   }
   next();
 }
