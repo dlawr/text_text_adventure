@@ -25,7 +25,7 @@ function setNew(req, res, next) {
     res.save = {
       phone: req.body.From,
       location: 'intro',
-      choices: ['']
+      choices: ['yes', 'no']
     }
   }
   next();

@@ -52,11 +52,11 @@ app.get('/text', text.allTexts, (req, res) => {res.json(res.texts)})
 
 app.post('/game',
 save.getSaveData,
-setup.saveNew,
 setup.setNew,
 setup.setGameState,
 mystery,
 setup.addChoices,
+setup.saveNew,
 save.saveCurrentData,
 (req, res) => {
   if (req.gameState.location === 'complete') {
