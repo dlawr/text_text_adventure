@@ -30,7 +30,7 @@ function see(req, person) {
   } else {
     var seen = false;
     req.gameState.met.forEach(function(el) {
-      if (el = person) {
+      if (el === person) {
         seen = true
       }
     });
@@ -150,14 +150,17 @@ function recRoom(req, res, next) {
       case 'dr. serenity schaden':
         req.gameState.choices = ['John Gardner', 'Jacques Cremin', 'exit']
         req.gameState.text = `“I’ve been in the office with Diana since dinner.  It’s been a long time since we got to catch up, because my residency was out of town.  After she kicked my butt at chess, I came looking for John.  He was on his way to find me in the office, but I caught up to him before he got there, and we came in here.”`;
+        see(req, 'Dr. Serenity Schaden');
         break;
       case 'john gardner':
         req.gameState.choices = ['Dr. Serenity Schaden', 'Jacques Cremin', 'exit']
         req.gameState.text = `“After dinner, I went into the living room.  Victoria Eichmann and I were playing a game of scrabble.  We have a long-running rivalry on the subject.  After she won, I left to look for my wife in the office, but I found her in the hall near the rec room, and then we ran into Jacques so we came in here.  We were thinking of playing some pool.”`;
+        see(req, 'John Gardner');
         break;
       case 'jacques cremin':
         req.gameState.choices = ['Dr. Serenity Schaden', 'John Gardner', 'exit']
         req.gameState.text = `“I was in kitchen with Bert Eichmann after dinner.  He’s the cook in this house, and I was helping him with cleanup.  He likes the company, and I am a bit of a cook myself, so I usually help him with the dishes.  When Victoria came in I decided to come find a game of pool.”`;
+        see(req, 'Jacques Cremin');
         break;
       default:
     }
