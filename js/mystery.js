@@ -72,7 +72,7 @@ function directory(req, res, next) {
     kitchen(req, res, next);
       break;
     case 'living room':
-
+    livingRoom(req, res, next);
       break;
     case 'accuse':
       accuse(req, res, next);
@@ -134,7 +134,7 @@ function house(req, res, next) {
       kitchen(req, res, next);
       break;
     case 'living room':
-
+      livingRoom(req, res, next);
       break;
     default:
 
@@ -204,6 +204,40 @@ function kitchen(req, res, next) {
         req.gameState.choices = ['Victoria Eichmann', 'exit'];
         req.gameState.text = `“I’ve been here since dinner, cleaning up and putting the finishing touches on dessert.  Jacques came in here with me to begin with, and he was a great help getting everything cleaned up.  We had a nice chat about the playoffs and the best methods of making flan.  He left when Victoria came in, I think he thought she wanted a moment alone with me.”`;
         see(req, 'Bert Eichmann');
+        break;
+      default:
+    }
+  }
+  next();
+}
+
+function livingRoom(req, res, next) {
+  var location = req.gameState.location.split('-');
+  if (location.length === 1) {
+    req.gameState.location = `living room-c1`;
+    req.gameState.text = `An overstuffed sectional dominates the living room, facing a large stone fireplace.  There is no fire at the moment, but a fire has been laid in the hearth and is ready to light.  A low coffee table contains the pieces of a game of Scrabble, and the couch holds three people crowded around the Scrabble board.`;
+    req.gameState.choices = ['Jeannette Cremin', 'Sandra Gerhold', 'David Gerhold', 'exit'];
+  } else {
+    switch (req.gameState.input) {
+      case 'exit':
+        req.gameState.location = 'house';
+        req.gameState.text = `Where would you like to go?`;
+        req.gameState.choices = ['office', 'rec room', 'kitchen', 'living room'];
+        break;
+      case 'jeannette cremin':
+        req.gameState.choices = ['Sandra Gerhold', 'David Gerhold', 'exit'];
+        req.gameState.text = `“Vicki and I came in here after dinner – Victoria Eichmann, the hostess – anyway, we came in here to play Scrabble.  After she kicked my butt, she went off to find Bert and I stayed to clean up the game, but then Sandra and David came in and wanted to play, so we started a new game.”`;
+        see(req, 'Jeannette Cremin');
+        break;
+      case 'sandra gerhold':
+        req.gameState.choices = ['Jeannette Cremin', 'Sandra Gerhold', 'David Gerhold', 'exit'];
+        req.gameState.text = `“After dinner, David and I went off to play pool in the rec room.  It was basically a draw, we both suck at pool, so eventually we called it quits and came in here to play Scrabble.  Unfortunately, Jeanette is much better than we are at it.”`;
+        see(req, 'Sandra Gerhold');
+        break;
+      case 'david gerhold':
+        req.gameState.choices = ['Jeannette Cremin', 'Sandra Gerhold', 'exit'];
+        req.gameState.text = `“After dinner, my wife and I went to the rec room for a friendly game of pool.  After I won, (she’s a bit of a sore loser), we came in here to play Scrabble.  Luckily Jeanette was here to save us from a one-on-one game, there are only so many of those we can play in a night.”`
+        see(req, 'David Gerhold');
         break;
       default:
     }
