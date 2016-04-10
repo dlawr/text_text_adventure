@@ -46,6 +46,12 @@ ${req.gameState.choices.join(' | ')}`
   }
 }
 
+function accuse(req, res, next) {
+  if (req.gameState.input === 'accuse') {
+
+  }
+}
+
 function directory(req, res, next) {
   switch (req.gameState.location.split('-')[0]) {
     case 'intro':
