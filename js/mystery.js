@@ -69,7 +69,7 @@ function directory(req, res, next) {
       recRoom(req, res, next);
       break;
     case 'kitchen':
-
+    kitchen(req, res, next);
       break;
     case 'living room':
 
@@ -131,7 +131,7 @@ function house(req, res, next) {
       recRoom(req, res, next);
       break;
     case 'kitchen':
-
+      kitchen(req, res, next);
       break;
     case 'living room':
 
@@ -179,6 +179,11 @@ function recRoom(req, res, next) {
       default:
     }
   }
+  next();
+}
+
+function kitchen(req, res, next) {
+
   next();
 }
 

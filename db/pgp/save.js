@@ -37,6 +37,7 @@ function insertNewUser(req, res, next) {
 }
 
 function saveCurrentData(req, res, next) {
+  console.log('saveCurrentData', req.gameState);
   db.none(`update states set
     (location, flavor_text, choices, met) =
     ($/location/, $/text/, $/choices/, $/met/)

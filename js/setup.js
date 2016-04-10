@@ -13,6 +13,7 @@ function setGameState(req, res, next) {
 
 function saveNew(req, res, next) {
   if (res.newUser) {
+    console.log('saveNew if');
     req.body.Body = '';
     save.insertNewUser(req, res, next);
   }
@@ -41,6 +42,7 @@ function addChoices(req, res, next) {
 ${req.gameState.choices.join(' | ')}`;
 
   }
+  console.log('addChoices', req.gameState);
   next();
 }
 
