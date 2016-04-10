@@ -46,15 +46,13 @@ function start(req, res, next) {
     req.gameState.text = `What was that? your choices are:`
     next();
   } else {
-    directory(req, res, next)
+    if (req.gameState.input === 'accuse') {
+      req.gameState.location = 'accuse';
+    }
+    directory(req, res, next);
   }
 }
 
-function accuse(req, res, next) {
-  if (req.gameState.input === 'accuse') {
-
-  }
-}
 
 function directory(req, res, next) {
   switch (req.gameState.location.split('-')[0]) {
@@ -76,8 +74,24 @@ function directory(req, res, next) {
     case 'living room':
 
       break;
+    case 'accuse':
+      accuse(req, res, next);
+      break;
     default:
 
+  }
+}
+
+function accuse(req, res, next) {
+  if (req.gameState.location === 'accuse') {
+    req.gameState.location = 'accuse-c1';
+    req.gameState.text = 'Who did it?';
+    req.gameState.choices = req.gameState.met;
+    next();
+  } else {
+    req.gameState.location = 'complete';
+    req.gameState.text = `Congradulations ${req.gameState.input} was arrested for the murder of Daniel Jenkins`;
+    next();
   }
 }
 
