@@ -61,10 +61,10 @@ function directory(req, res, next) {
       house(req, res, next);
       break;
     case 'office':
-
+      office(req, res, next);
       break;
     case 'rec room':
-
+      recRoom(req, res, next);
       break;
     case 'kitchen':
 
@@ -119,7 +119,7 @@ function house(req, res, next) {
       office(req, res, next);
       break;
     case 'rec room':
-
+      recRoom(req, res, next);
       break;
     case 'kitchen':
 
@@ -138,6 +138,13 @@ function office(req, res, next) {
 
   office, rec room, kitchen, or living room`
   next();
+}
+
+function recRoom(req, res, next) {
+  var location = req.gameState.location.split('-');
+  if (location.length === 1) {
+
+  }
 }
 
 module.exports = start;
