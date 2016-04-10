@@ -153,7 +153,7 @@ function recRoom(req, res, next) {
   if (location.length === 1) {
     req.gameState.location = `rec room-c1`
     req.gameState.text = `As you enter the rec room, you see a pool table and a foosball table off to the right, with what appears to be a pool game abandoned mid-stream.  On the left, three people are sitting on an overstuffed couch, in front of a television screen.  The TV is currently off.  Two of the people, a petite brunette and a man of middling height, are sitting close together at one end of the couch, while a balding man sits a few feet away, facing them.  You say, “I’d like to speak to …`
-    req.gameState.choices = ['Dr. Serenity Schaden', 'John Gardner', 'Jacques Cremin', 'exit']
+    req.gameState.choices = ['Dr. Serenity Schaden', 'John Gardner', 'Jacques Cremin', 'exit'];
   } else {
     switch (req.gameState.input) {
       case 'exit':
@@ -183,7 +183,12 @@ function recRoom(req, res, next) {
 }
 
 function kitchen(req, res, next) {
-
+  var location = req.gameState.location.split('-');
+  if (location.length === 1) {
+    req.gameState.location = `kitchen-c1`;
+    req.gameState.text = ``;
+    req.gameState.choices = [];
+  }
   next();
 }
 
