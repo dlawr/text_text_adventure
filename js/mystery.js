@@ -19,7 +19,6 @@ function badInput(req) {
   if (req.gameState.location === 'intro') {
     bad = false;
   }
-  console.log(bad);
   return bad;
 }
 
@@ -42,7 +41,6 @@ function see(req, person) {
 
 function start(req, res, next) {
   if (badInput(req)) {
-    console.log(req.gameState);
     req.gameState.text = `What was that? your choices are:`
     next();
   } else {

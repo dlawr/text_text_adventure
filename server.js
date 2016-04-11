@@ -34,7 +34,6 @@ save.saveCurrentData,
   if (req.gameState.location === 'complete') {
     save.deleteState(req);
   }
-  console.log('final callback',req.gameState);
   client.messages.create({
     to: req.gameState.phone,
     from: `+${process.env.PHONE}`,
